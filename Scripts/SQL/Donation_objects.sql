@@ -1,4 +1,5 @@
-CREATE or replace TYPE zexec.address_info_ext as OBJECT
+
+CREATE or replace TYPE some_schema.address_info_ext as OBJECT
 (
    home_address VARCHAR2 (120),
    work_address VARCHAR2 (120),
@@ -6,21 +7,21 @@ CREATE or replace TYPE zexec.address_info_ext as OBJECT
 );
 /
 
-CREATE or replace TYPE zexec.phone_info_ext as OBJECT
+CREATE or replace TYPE some_schema.phone_info_ext as OBJECT
 (
    home_phone VARCHAR2 (12),
    work_phone VARCHAR2 (12),
    other_phone VARCHAR2(12)
 );
 /
-create or replace type zexec.address_info as table of zexec.address_info_ext;
+create or replace type some_schema.address_info as table of some_schema.address_info_ext;
 /
 
-create or replace type zexec.phone_info as table of zexec.phone_info_ext;
+create or replace type some_schema.phone_info as table of some_schema.phone_info_ext;
 /
 
 
-create  sequence zexec.donerinfo_seq
+create  sequence some_schema.donerinfo_seq
 increment by 1
 start with 1
 minvalue 0
@@ -29,9 +30,9 @@ NOCYCLE;
 
 ---whole database
 
-create table  zexec.zdonations
+create table  some_schema.zdonations
 (
- donor_seq_no number default zexec.donerinfo_seq.nextval,
+ donor_seq_no number default some_schema.donerinfo_seq.nextval,
  donor_ssn varchar2(12),
  donor_name varchar2(120),
  donor_birth_date date,
@@ -48,18 +49,18 @@ create table  zexec.zdonations
  nested table donor_address  store as nested_donor_addr
  nested table donor_phone_info  store as nested_phone_space;
  
+ --comments on table
  
- 
-comment on table zexec.zdonations is 'Donations';
-comment on column  zexec.zdonations.donation_type is 'Cash, Check, Credit Card, Etc';
-comment on column zexec.zdonations.donation_date is 'Date of donation';
-comment on column zexec.zdonations.donation_amount is 'Donor donated amount';
-comment on column zexec.zdonations.donation_memo is 'Meaningful memo from donor';
+comment on table some_schema.zdonations is 'Donations';
+comment on column  some_schema.zdonations.donation_type is 'Cash, Check, Credit Card, Etc';
+comment on column some_schema.zdonations.donation_date is 'Date of donation';
+comment on column some_schema.zdonations.donation_amount is 'Donor donated amount';
+comment on column some_schema.zdonations.donation_memo is 'Meaningful memo from donor';
 
  
 ----insert statement
 
- insert into zexec.zdonations(donor_ssn,
+ insert into some_schema.zdonations(donor_ssn,
                               donor_name,
                               donor_birth_date,
                               donor_ethnicity,
