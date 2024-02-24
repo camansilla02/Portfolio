@@ -1,1 +1,1 @@
-<h1>Training labs completed</h1>
+<h1>Training labs and projects</h1>
