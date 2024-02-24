@@ -1,4 +1,4 @@
-
+--addresses will need to store home address, work address, other addresses
 CREATE or replace TYPE some_schema.address_info_ext as OBJECT
 (
    home_address VARCHAR2 (120),
@@ -6,7 +6,7 @@ CREATE or replace TYPE some_schema.address_info_ext as OBJECT
    other_address VARCHAR2(120)
 );
 /
-
+--phone info needs to include different types of contact info
 CREATE or replace TYPE some_schema.phone_info_ext as OBJECT
 (
    home_phone VARCHAR2 (12),
@@ -28,7 +28,7 @@ minvalue 0
 maxvalue 9999999999999999999999999999
 NOCYCLE;
 
----whole database
+---table with key
 
 create table  some_schema.zdonations
 (
